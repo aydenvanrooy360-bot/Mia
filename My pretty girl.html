@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you my pretty girl ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+
+        :root {
+            --bg-color: #ffeef2;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-color: #5c3d46;
+            --accent-color: #ff6b8b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--accent-color);
+            opacity: 0.3;
+            animation: float up 4s linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Envelope / Start Screen */
+        .envelope-wrapper {
+            z-index: 10;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .envelope-wrapper:hover {
+            transform: scale(1.05);
+        }
+        .envelope {
+            font-size: 100px;
+            animation: heartbeat 1.5s infinite;
+        }
+        .click-me {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Letter Container */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 5;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: none;
+            box-sizing: border-box;
+        }
+
+        /* Scrollbar Styling */
+        .container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .container::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-color);
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .letter-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            white-space: pre-line;
+            text-align: left;
+        }
+
+        /* Audio Controls */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 100;
+            font-family: 'Quicksand', sans-serif;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Start Screen -->
+    <div class="envelope-wrapper" id="envelopeScreen" onclick="openLetter()">
+        <div class="envelope">💌</div>
+        <div class="click-me">Open for Mia</div>
+    </div>
+
+    <!-- Letter Screen -->
+    <div class="container" id="letterContainer">
+        <h1 id="title"></h1>
+        <div class="letter-text" id="typedText"></div>
+    </div>
+
+    <!-- Romantic Soft Piano Background Track -->
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵 Pause Music</button>
+
+    <script>
+        const text = `I don’t even know where to start, because every time I try to explain what you mean to me, normal words feel too small. They don’t carry enough weight. They don’t hold enough feeling. But I’ll still try, because you deserve to know — even if I can never fully express it the way I feel it inside me.
+
+You are not just someone I love. You are someone who changed the way I see love completely. Before you, I thought love was just a word people used easily. But now I understand it differently. I understand it in quiet moments, in small thoughts, in the way my mind always finds its way back to you no matter what I’m doing.
+
+You became my peace without even trying. My comfort without even knowing. My favourite part of days that feel ordinary. Even when life gets stressful, even when things don’t go right, even when I feel tired or overwhelmed — the thought of you somehow makes everything feel lighter.
+
+I love you in ways that are not loud or dramatic. I love you in the quiet consistency of my heart choosing you again and again. I love you in the way I miss you randomly. In the way I imagine you smiling and it makes me feel calm. In the way I find myself caring about your happiness more than anything else around me.
+
+You are my pretty girl, Mia. And when I say that, I don’t mean it in a shallow way. I mean it in a deep, permanent way — like something my heart decided and never questioned again.
+
+There are so many things I wish I could tell you in person. Like how you’ve become part of my thoughts without effort. How I find myself thinking about your voice, your smile, your presence when I’m alone. How even silence feels less empty when I think of you.
+
+If I had to describe what you mean to me in one sentence, I couldn’t. Because you are not a sentence. You are a feeling. You are a chapter in my life that I never want to end. You are the kind of person I don’t just like in the moment — I care about in a long-term, deep, real way.
+
+And maybe I’m not perfect. Maybe I don’t always say things the right way or show everything exactly how I feel it. But one thing will always stay true — my feelings for you are real, and they don’t fade when things get quiet or when life gets busy. They stay. They grow. They stay yours.
+
+I don’t know what the future holds, but I know that in every version of it I imagine, you are there in some way. Not because I need you to complete me, but because you already mean something to me that I don’t want to lose.
+
+So if you ever doubt yourself, or ever wonder how much you matter to me, I hope you come back to this and remember:
+
+You are deeply loved, consistently chosen, and genuinely important to me — more than you might ever fully realise. ❤️`;
+
+        // Floating Hearts Generator
+        function createHeart() {
+            const container = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '🌸', '✨'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHeart, 400);
+
+        // Open Letter, Play Music, and Start Typing
+        function openLetter() {
+            document.getElementById('envelopeScreen').style.display = 'none';
+            const container = document.getElementById('letterContainer');
+            container.style.display = 'block';
+            
+            // Play romantic audio track
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.6; // Soft, ambient volume
+            music.play().then(() => {
+                document.getElementById('musicBtn').style.display = 'block';
+            }).catch(() => {
+                // If browser insists on manual interaction, show button to let them know music is there
+                document.getElementById('musicBtn').style.display = 'block';
+                document.getElementById('musicBtn').innerText = "🎵 Play Music";
+            });
+
+            // Type Title first, then body
+            let titleText = "Mia ❤️";
+            let titleIndex = 0;
+            const titleEl = document.getElementById('title');
+
+            function typeTitle() {
+                if (titleIndex < titleText.length) {
+                    titleEl.innerHTML += titleText.charAt(titleIndex);
+                    titleIndex++;
+                    setTimeout(typeTitle, 150);
+                } else {
+                    typeBody();
+                }
+            }
+
+            let bodyIndex = 0;
+            const bodyEl = document.getElementById('typedText');
+
+            function typeBody() {
+                if (bodyIndex < text.length) {
+                    bodyEl.innerHTML += text.charAt(bodyIndex);
+                    bodyIndex++;
+                    // Smooth auto scroll as the letter types out
+                    container.scrollTop = container.scrollHeight;
+                    setTimeout(typeBody, 35); 
+                }
+            }
+
+            typeTitle();
+        }
+
+        // Music Control Toggle
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
+            if (music.paused) {
+                music.play();
+                btn.innerText = "🎵 Pause Music";
+            } else {
+                music.pause();
+                btn.innerText = "🎵 Play Music";
+            }
+        }
+    </script>
+</body>
+</html>
