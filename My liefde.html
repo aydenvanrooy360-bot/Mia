@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Pretty Girl, Mia ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ff4b6e;
+            --soft-pink: #ffe3e8;
+            --dark-pink: #d63354;
+            --bg-color: #fff5f6;
+            --cream: #fffdf9;
+            --sticky-yellow: #fff9d6;
+            --sky-blue: #e0f2fe;
+            --garden-green: #f0fdf4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 10px 20px;
+        }
+
+        h1 {
+            color: var(--primary-pink);
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(255, 75, 110, 0.1);
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin-bottom: 60px;
+        }
+
+        /* Polaroid Cute Drawings Section */
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0 40px 0;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 25px 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 190px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* The canvas frame for the cute drawings */
+        .drawing-canvas {
+            width: 100%;
+            height: 190px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* Specific styles for each drawing background */
+        .draw-stars { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: #fef08a; }
+        .draw-flower { background: var(--garden-green); }
+        .draw-heart { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
+
+        .drawing-canvas .sub-emoji {
+            font-size: 1.2rem;
+            position: absolute;
+        }
+
+        /* Scrapbook angled look */
+        .polaroid:nth-child(1) { transform: rotate(-5deg); }
+        .polaroid:nth-child(2) { transform: rotate(3deg); }
+        .polaroid:nth-child(3) { transform: rotate(-3deg); }
+
+        .polaroid:hover {
+            transform: scale(1.08) rotate(0deg);
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(255, 75, 110, 0.25);
+        }
+
+        /* Card Container Styles */
+        .card {
+            background: var(--cream);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(255, 75, 110, 0.06);
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 75, 110, 0.15);
+            position: relative;
+        }
+
+        /* Message Box Styling */
+        .essay-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            white-space: pre-line;
+            text-align: left;
+        }
+
+        .essay-title {
+            color: var(--dark-pink);
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Interactivity Central Grid */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        @media (max-width: 600px) {
+            .interactive-grid { grid-template-columns: 1fr; }
+        }
+
+        .mini-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 75, 110, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        /* Buttons Styling */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .btn {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 75, 110, 0.15);
+            outline: none;
+            width: 80%;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-pink);
+            box-shadow: 0 6px 15px rgba(255, 75, 110, 0.3);
+        }
+
+        .btn:active { transform: scale(0.96); }
+
+        .btn-inline-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            position: relative;
+            min-height: 50px;
+        }
+
+        #runawayBtn {
+            position: absolute;
+            transition: all 0.2s ease;
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        /* Love Meter progress bars */
+        .meter-container {
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            height: 22px;
+            width: 100%;
+            margin-top: 15px;
+            overflow: hidden;
+            display: none;
+            position: relative;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .meter-fill {
+            background: linear-gradient(90deg, var(--primary-pink), #ff8ea4);
+            height: 100%;
+            width: 0%;
+            transition: width 2s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        .meter-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 2px;
+            font-weight: bold;
+            color: #333;
+            font-size: 0.85rem;
+        }
+
+        /* Interactive Note Creation Block */
+        .note-input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .note-input-area input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 75, 110, 0.3);
+            outline: none;
+        }
+
+        .notes-board {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .sticky-note {
+            background-color: var(--sticky-yellow);
+            color: #443c15;
+            padding: 15px;
+            width: 130px;
+            min-height: 100px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.05);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            transform: rotate(2deg);
+            border-bottom-right-radius: 20px 5px;
+            animation: foldIn 0.3s ease-out;
+        }
+
+        .sticky-note:nth-child(even) { transform: rotate(-3deg); background-color: #e3f2fd; color: #1b3a4b; }
+
+        /* Floating Assets Animation */
+        .floating-heart {
+            position: fixed;
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+            animation: floatUp linear infinite;
+            bottom: -50px;
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .butterfly {
+            position: fixed;
+            font-size: 1.8rem;
+            animation: flyAround linear infinite;
+            bottom: -50px;
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes flyAround {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+            33% { transform: translateY(-33vh) translateX(40px) rotate(20deg); }
+            66% { transform: translateY(-66vh) translateX(-40px) rotate(-20deg); }
+            100% { transform: translateY(-105vh) translateX(10px) rotate(0deg); opacity: 0; }
+        }
+
+        @keyframes foldIn {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            100% { transform: scale(1) rotate(2deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>For My Pretty Girl ✨</h1>
+        <p class="subtitle">Mia, I made a special interactive space just for us.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- CUTE POLAROID DRAWINGS (NO IMAGE FILES NEEDED) -->
+        <div class="gallery-container">
+            <div class="polaroid">
+                <div class="drawing-canvas draw-stars">
+                    🌙
+                    <div class="sub-emoji" style="top:20px; left:30px;">⭐</div>
+                    <div class="sub-emoji" style="bottom:30px; right:40px;">✨</div>
+                </div>
+                <p style="margin: 8px 0 0 0; font-family: 'Courier New', monospace; color: #555; font-size: 0.9rem;">Under the stars ✨</p>
+            </div>
+            <div class="polaroid">
+                <div class="drawing-canvas draw-flower">
+                    🌸
+                    <div class="sub-emoji" style="top:15px; right:25px;">🦋</div>
+                    <div class="sub-emoji" style="bottom:20px; left:20px;">🌱</div>
+                </div>
+                <p style="margin: 8px 0 0 0; font-family: 'Courier New', monospace; color: #555; font-size: 0.9rem;">My favorite view 🌸</p>
+            </div>
+            <div class="polaroid">
+                <div class="drawing-canvas draw-heart">
+                    💝
+                    <div class="sub-emoji" style="top:25px; left:25px;">💞</div>
+                    <div class="sub-emoji" style="bottom:25px; right:25px;">✨</div>
+                </div>
+                <p style="margin: 8px 0 0 0; font-family: 'Courier New', monospace; color: #555; font-size: 0.9rem;">Forever yours 💞</p>
+            </div>
+        </div>
+
+        <!-- MAIN ESSAY CONTAINER -->
+        <div class="card">
+            <h2 class="essay-title">Mia ❤️</h2>
+            <div class="essay-text">I don’t even know where to start, because every time I try to explain what you mean to me, normal words feel too small. They don’t carry enough weight. They don’t hold enough feeling. But I’ll still try, because you deserve to know — even if I can never fully express it the way I feel it inside me.
+
+You are not just someone I love. You are someone who changed the way I see love completely. Before you, I thought love was just a word people used easily. But now I understand it differently. I understand it in quiet moments, in small thoughts, in the way my mind always finds its way back to you no matter what I’m doing.
+
+You became my peace without even trying. My comfort without even knowing. My favourite part of days that feel ordinary. Even when life gets stressful, even when things don’t go right, even when I feel tired or overwhelmed — the thought of you somehow makes everything feel lighter.
+
+I love you in ways that are not loud or dramatic. I love you in the quiet consistency of my heart choosing you again and again. I love you in the way I miss you randomly. In the way I imagine you smiling and it makes me feel calm. In the way I find myself caring about your happiness more than anything else around me.
+
+You are my pretty girl, Mia. And when I say that, I don’t mean it in a shallow way. I mean it in a deep, permanent way — like something my heart decided and never questioned again.
+
+There are so many things I wish I could tell you in person. Like how you've become part of my thoughts without effort. How I find myself thinking about your voice, your smile, your presence when I’m alone. How even silence feels less empty when I think of you.
+
+If I had to describe what you mean to me in one sentence, I couldn’t. Because you are not a sentence. You are a feeling. You are a chapter in my life that I never want to end. You are the kind of person I don't just like in the moment — I care about in a long-term, deep, real way.
+
+And maybe I’m not perfect. Maybe I don’t always say things the right way or show everything exactly how I feel it. But one thing will always stay true — my feelings for you are real, and they don’t fade when things get quiet or when life gets busy. They stay. They grow. They stay yours.
+
+I don’t know what the future holds, but I know that in every version of it I imagine, you are there in some way. Not because I need you to complete me, but because you already mean something to me that I don’t want to lose.
+
+So if you ever doubt yourself, or ever wonder how much you matter to me, I hope you come back to this and remember:
+
+You are deeply loved, consistently chosen, and genuinely important to me — more than you might ever fully realise. ❤️</div>
+        </div>
+
+        <!-- TWO-COLUMN INTERACTIVE MODULAR SECTION -->
+        <div class="interactive-grid">
+            
+            <!-- MODULE 1: COMPLIMENT/REMINDER DECK -->
+            <div class="mini-card">
+                <h3 style="color: var(--dark-pink); margin: 0 0 10px 0; font-size: 1.2rem;">✨ Mia's Reminders</h3>
+                <p style="color: #666; font-size: 0.85rem; margin-bottom: 15px;">Tap to pull a dynamic reason why you are completely loved.</p>
+                <button class="btn" onclick="generateCompliment()" style="width: 90%;">Open a Reminder</button>
+                <p id="complimentDisplay" style="margin-top: 15px; font-size: 0.95rem; font-style: italic; color: var(--dark-pink); font-weight: 600; min-height: 40px;"></p>
+            </div>
+
+            <!-- MODULE 2: HOLOGRAPHIC LOVE METER -->
+            <div class="mini-card">
+                <h3 style="color: var(--dark-pink); margin: 0 0 10px 0; font-size: 1.2rem;">📊 Love Metrics</h3>
+                <p style="color: #666; font-size: 0.85rem; margin-bottom: 15px;">Calculate the exact telemetry of my current system feelings.</p>
+                <button class="btn" onclick="startLoveMeter()" style="width: 90%;">Run Calculation</button>
+                <div class="meter-container" id="meterBg">
+                    <div class="meter-fill" id="meterFill"></div>
+                    <div class="meter-text" id="meterText">0%</div>
+                </div>
+                <p id="loveMessage" style="margin-top: 10px; font-weight: bold; color: var(--dark-pink); font-size: 0.85rem; line-height: 1.3;"></p>
+            </div>
+
+        </div>
+
+        <!-- MODULE 3: THE GAME BLOCK -->
+        <div class="card" style="text-align: center; padding: 25px;">
+            <h3 style="color: var(--dark-pink); margin-top: 0; font-size: 1.3rem;">A Quick Question... 🤔</h3>
+            <p style="color: #666; font-size: 0.95rem; margin: 5px 0;">Do you know how completely amazing you are?</p>
+            <div class="btn-inline-container">
+                <button class="btn" onclick="answeredYes()" style="width: auto; padding: 10px 25px;">Yes, completely! 🥰</button>
+                <button class="btn" id="runawayBtn" onmouseover="dodgeButton()" onclick="dodgeButton()">No 😤</button>
+            </div>
+            <p id="gameResponse" style="margin-top: 10px; font-weight: bold; color: var(--dark-pink); font-size: 0.95rem;"></p>
+        </div>
+
+        <!-- EXTENDED NEW FEATURE: INTERACTIVE SCRAPBOOK LEAVE-A-NOTE BOARD -->
+        <div class="card" style="text-align: center;">
+            <h3 style="color: var(--dark-pink); margin-top: 0; font-size: 1.3rem;">Mia's Interactive Message Board 📌</h3>
+            <p style="color: #666; font-size: 0.9rem;">Type something below to pin a sticky note onto our board right now!</p>
+            
+            <div class="note-input-area">
+                <input type="text" id="noteInput" placeholder="Type a message or love note here..." onkeypress="handleKeyPress(event)">
+                <button class="btn" onclick="addStickyNote()" style="width: auto; padding: 0 20px; margin: 0;">Pin It</button>
+            </div>
+
+            <div class="notes-board" id="boardContainer">
+                <!-- Starting Pre-pinned Note -->
+                <div class="sticky-note">
+                    <strong>From Me:</strong><br>Welcome to our space! leave a note ❤️
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Custom Reminders Dataset
+        const compliments = [
+            "You became my peace without even trying. 🌸",
+            "You are deeply loved, consistently chosen, and genuinely important. ❤️",
+            "You are my pretty girl, Mia. Always and forever.",
+            "Even when life gets stressful, the thought of you makes everything feel lighter. ✨",
+            "You are a chapter in my life that I never want to end. 📖",
+            "My mind always finds its way back to you no matter what I’m doing. 🥰",
+            "My feelings for you are real, and they stay. They grow. They stay yours."
+        ];
+
+        function generateCompliment() {
+            const display = document.getElementById('complimentDisplay');
+            const randomPhrase = compliments[Math.floor(Math.random() * compliments.length)];
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = randomPhrase;
+                display.style.opacity = 1;
+            }, 150);
+
+            // Trigger burst effects
+            for(let i=0; i<3; i++) {
+                spawnElement('💗', 'floating-heart');
+                spawnElement('🦋', 'butterfly');
+            }
+        }
+
+        // Love Meter Loop
+        function startLoveMeter() {
+            const meterBg = document.getElementById('meterBg');
+            const meterFill = document.getElementById('meterFill');
+            const meterText = document.getElementById('meterText');
+            const loveMessage = document.getElementById('loveMessage');
+
+            meterBg.style.display = 'block';
+            meterFill.style.width = '0%';
+            meterText.innerText = '0%';
+            loveMessage.innerText = 'Analyzing...';
+
+            setTimeout(() => {
+                meterFill.style.width = '100%';
+                meterText.innerText = '∞ %';
+                loveMessage.innerText = 'Error: Mia, my love for you overloaded the server. Scales can\'t hold this! 📈❤️';
+                
+                for(let i=0; i<15; i++) {
+                    setTimeout(() => spawnElement('💗', 'floating-heart'), i * 80);
+                    setTimeout(() => spawnElement('🦋', 'butterfly'), i * 110);
+                }
+            }, 150);
+        }
+
+        // Runaway dodge button logic
+        function dodgeButton() {
+            const btn = document.getElementById('runawayBtn');
+            const randomX = Math.random() * 160 - 80;
+            const randomY = Math.random() * 40 - 20;
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            document.getElementById('gameResponse').innerText = "Wrong choice! Pick the correct button. 😉";
+        }
+
+        function answeredYes() {
+            document.getElementById('gameResponse').innerText = "Correct! Becau
